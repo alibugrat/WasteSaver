@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package product;
+option go_package="com.alibugrat/go-product-grpc;go_product_grpc";
+
+service ProductManagement{
+  //Unary
+  rpc GetProducts(GetProductParams) returns (ProductList){}
+  rpc GetProduct(GetProductParamsWithId) returns (Product){}
+}
+
+message GetProductParams{
+
+}
+
+message GetProductParamsWithId{
+  int32 productId = 1;
+}
+
+message Product{
+  int32 productId = 1;
+  string manufacturer = 2;
+  string productName = 3;
+}
+
+message ProductList{
+  repeated Product product = 1;
+}
+
+
